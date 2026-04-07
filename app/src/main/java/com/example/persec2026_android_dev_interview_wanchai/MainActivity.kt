@@ -25,29 +25,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun runAllTests() {
 
-        // ── Q1: isBalanced ────────────────────────────────────
-        Log.d("Q1", "=== Q1: isBalanced ===")
-        Log.d("Q1", "()"       + " => " + isBalanced("()"))        // true
-        Log.d("Q1", "([{)"     + " => " + isBalanced("([{)"))      // false
-        Log.d("Q1", "([]]"     + " => " + isBalanced("([]]"))      // false
-        Log.d("Q1", "([{}])"   + " => " + isBalanced("([{}])"))    // true
-        Log.d("Q1", "([[{}]]]" + " => " + isBalanced("([[{}]]]"))  // false
-        Log.d("Q1", ")"        + " => " + isBalanced(")"))         // false
-        Log.d("Q1", "(]}])"    + " => " + isBalanced("(]}])"))     // false
-        Log.d("Q1", "([)]"     + " => " + isBalanced("([)]"))      // false
-        Log.d("Q1", "{"        + " => " + isBalanced("{"))         // false
 
-        // ── Q2: sortStrings ───────────────────────────────────
+        Log.d("Q1", "=== Q1: isBalanced ===")
+        Log.d("Q1", "()"       + " => " + isBalanced("()"))
+        Log.d("Q1", "([{)"     + " => " + isBalanced("([{)"))
+        Log.d("Q1", "([]]"     + " => " + isBalanced("([]]"))
+        Log.d("Q1", "([{}])"   + " => " + isBalanced("([{}])"))
+        Log.d("Q1", "([[{}]]]" + " => " + isBalanced("([[{}]]]"))
+        Log.d("Q1", ")"        + " => " + isBalanced(")"))
+        Log.d("Q1", "(]}])"    + " => " + isBalanced("(]}])"))
+        Log.d("Q1", "([)]"     + " => " + isBalanced("([)]"))
+        Log.d("Q1", "{"        + " => " + isBalanced("{"))
+
+
         Log.d("Q2", "=== Q2: sortStrings ===")
         Log.d("Q2", sortStrings(listOf("TH19", "SG20", "TH2")).toString())
         Log.d("Q2", sortStrings(listOf("TH10", "TH3Netflix", "TH1", "TH7")).toString())
 
-        // ── Q3: autocomplete ──────────────────────────────────
+
         Log.d("Q3", "=== Q3: autocomplete ===")
         Log.d("Q3", autocomplete("th", listOf("Mother", "Think", "Worthy", "Apple", "Android"), 2).toString())
         Log.d("Q3", autocomplete("th", listOf("Mother", "Think", "Worthy", "Apple", "Android"), 3).toString())
 
-        // ── Q4: Roman Numerals ────────────────────────────────
         Log.d("Q4", "=== Q4: Roman Numerals ===")
         Log.d("Q4", "1989 => " + intToRoman(1989))
         Log.d("Q4", "2000 => " + intToRoman(2000))
@@ -58,14 +57,12 @@ class MainActivity : AppCompatActivity() {
         Log.d("Q4", "LXVIII    => " + romanToInt("LXVIII"))
         Log.d("Q4", "CIX       => " + romanToInt("CIX"))
 
-        // ── Q5: sortDigitsDescending ──────────────────────────
         Log.d("Q5", "=== Q5: sortDigitsDescending ===")
         Log.d("Q5", "3008 => " + sortDigitsDescending(3008))
         Log.d("Q5", "1989 => " + sortDigitsDescending(1989))
         Log.d("Q5", "2679 => " + sortDigitsDescending(2679))
         Log.d("Q5", "9163 => " + sortDigitsDescending(9163))
 
-        // ── Q6: tribonacci ────────────────────────────────────
         Log.d("Q6", "=== Q6: tribonacci ===")
         Log.d("Q6", tribonacci(listOf(1, 3, 5), 5).toString())
         Log.d("Q6", tribonacci(listOf(2, 2, 2), 3).toString())
@@ -73,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("Q6", tribonacci(listOf(1, 1, 1), 6).toString())
     }
 
-    // ── Q1 ────────────────────────────────────────────────────
+
     private fun isBalanced(input: String): Boolean {
         val stack = ArrayDeque<Char>()
         val matchingClose = mapOf(')' to '(', ']' to '[', '}' to '{')
@@ -89,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         return stack.isEmpty()
     }
 
-    // ── Q2 ────────────────────────────────────────────────────
+
     private fun sortStrings(items: List<String>): List<String> {
         val regex = Regex("^([A-Za-z]+)(\\d+)(.*)\$")
         return items.sortedWith(Comparator { a, b ->
@@ -107,7 +104,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    // ── Q3 ────────────────────────────────────────────────────
     private fun autocomplete(search: String, items: List<String>, maxResult: Int): List<String> {
         val lower = search.lowercase()
         val matched = items.filter { it.lowercase().contains(lower) }
@@ -122,7 +118,6 @@ class MainActivity : AppCompatActivity() {
         return (starts + middle + ends).distinct().take(maxResult)
     }
 
-    // ── Q4 ────────────────────────────────────────────────────
     private fun intToRoman(num: Int): String {
         val values  = intArrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
         val symbols = arrayOf("M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I")
@@ -158,7 +153,6 @@ class MainActivity : AppCompatActivity() {
             .toInt()
     }
 
-    // ── Q6 ────────────────────────────────────────────────────
     private fun tribonacci(initial: List<Int>, n: Int): List<Int> {
         if (n == 0) return emptyList()
         val seq = initial.toMutableList()
